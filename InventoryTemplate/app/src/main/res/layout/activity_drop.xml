@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200">
+
+    <ToggleButton
+        android:id="@+id/toggleButtonAddSubtract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="27dp"
+        android:layout_y="33dp"
+        android:textOn="Add"
+        android:textOff="Subtract"/>
+
+    <EditText
+        android:id="@+id/updateQuantity"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_x="3dp"
+        android:layout_y="85dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Quantity" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="137dp"
+        android:text="Confirm" />
+</AbsoluteLayout>

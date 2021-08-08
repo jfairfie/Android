@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="37dp"
+        android:layout_y="440dp"
+        android:text="Login"
+        app:backgroundTint="#673AB7" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="164dp"
+        android:layout_y="303dp" />
+
+    <EditText
+        android:id="@+id/UserNameInput"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="37dp"
+        android:layout_y="296dp"
+        android:hint="Username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/PasswordInput"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="32dp"
+        android:layout_y="367dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+</AbsoluteLayout>

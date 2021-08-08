@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inventory.inv">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="InventoryTemplate"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BPTInventory"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ModifyUserActivity"></activity>
+        <activity android:name=".CreateUserActivity" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".AddItemActivity" />
+        <activity android:name=".SelectionActivity" />
+        <activity android:name=".UserManagementActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
