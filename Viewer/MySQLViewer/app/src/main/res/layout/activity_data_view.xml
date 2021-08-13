@@ -9,7 +9,16 @@
     <ListView
         android:id="@+id/mysqlStructure"
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="660dp"
+        android:layout_y="69dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_x="18dp"
+        android:layout_y="11dp"
+        android:text="Back" />
 </AbsoluteLayout>

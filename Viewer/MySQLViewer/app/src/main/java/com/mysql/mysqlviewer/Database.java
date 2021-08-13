@@ -34,20 +34,25 @@ public class Database {
 
     public Database(Context c, String address) {
         this.c = c;
-        this.address = address;
+        this.address = "";
     }
 
     //Authentication for username and password
     public void Login(Map map) {
-        String data = returnData(map);
-        String request = address + "dbConnection.php";
-        LoginPHP login = new LoginPHP(data, request, map.get("username").toString(), map.get("password").toString());
-        login.execute();
+        try {
+            String data = returnData(map);
+            String request = address + "dbConnection.php";
+            LoginPHP login = new LoginPHP(data, request, map.get("username").toString(), map.get("password").toString(), map.get("endpoint").toString());
+            login.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void ViewPHP(Context c, Map map, ListView listView, String[] selectList) {
+    public void ViewPHP(Context c, Map map, ListView listView, String[] selectList, String php) {
         String data = returnData(map);
-        String request = address + "showDatabases.php";
+        String request = address + php;
+        System.out.println(request);
         PostPHP post = new PostPHP(c, data, request, listView, selectList);
         post.execute();
     }
@@ -183,13 +188,13 @@ public class Database {
             progressDialog.dismiss();
             if (result != null) {
                 try {
+                    System.out.println(result);
                     JSONArray jsonArray = new JSONArray(result);
                     ArrayList<String> items = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.optJSONObject(i);
                         String jsonString = "";
                         for (int j = 0; j < selectList.length; j++) {
-                            System.out.println(selectList[j]);
                             jsonString += jsonObject.getString(selectList[j]).trim() + " ";
                         }
                         items.add(jsonString);
@@ -206,13 +211,14 @@ public class Database {
     //LoginPHP simply logins the user in, and moves to the next activity
     private class LoginPHP extends AsyncTask<Void, Void, Boolean> {
         private ProgressDialog progressDialog;
-        private String data, request, username, password;
+        private String data, request, username, password, endpoint;
 
-        public LoginPHP(String data, String request, String username, String password) {
+        public LoginPHP(String data, String request, String username, String password, String endpoint) {
             this.request = request;
             this.data = data;
             this.username = username;
             this.password = password;
+            this.endpoint = endpoint;
         }
 
         @Override
@@ -226,12 +232,16 @@ public class Database {
         @Override
         protected Boolean doInBackground(Void... voids) {
                 HttpURLConnection httpURLConnection = writeConnection(request, data);
-                String retString = readerConnection(httpURLConnection);
-                retString = retString.trim();
-                if (retString.equals("200")) {
-                    return true;
+                try {
+                    String retString = readerConnection(httpURLConnection);
+                    retString = retString.trim();
+                    if (retString.equals("200")) {
+                        return true;
+                    }
+                    return false;
+                } catch (Exception e) {
+                    return false;
                 }
-                return false;
         }
 
         @Override
@@ -242,9 +252,10 @@ public class Database {
             if (result == true) {
                 Toast.makeText(c, "Logging in...", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(c, DataView.class);
-                intent.putExtra("Username", username);
-                intent.putExtra("Password", password);
-                intent.putExtra("Address", address);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
+                intent.putExtra("address", address);
+                intent.putExtra("endpoint", endpoint);
                 c.startActivity(intent);
             } else {
                 Toast.makeText(c, "Wrong credentials to login", Toast.LENGTH_SHORT).show();
