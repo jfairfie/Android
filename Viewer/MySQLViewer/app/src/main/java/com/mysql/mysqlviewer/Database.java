@@ -34,7 +34,7 @@ public class Database {
 
     public Database(Context c, String address) {
         this.c = c;
-        this.address = "";
+        this.address = "https://bptinventory.a2hosted.com/phpscripts/";
     }
 
     //Authentication for username and password
@@ -52,7 +52,7 @@ public class Database {
     public void ViewPHP(Context c, Map map, ListView listView, String[] selectList, String php) {
         String data = returnData(map);
         String request = address + php;
-        System.out.println(request);
+//        System.out.println(request);
         PostPHP post = new PostPHP(c, data, request, listView, selectList);
         post.execute();
     }
@@ -188,7 +188,7 @@ public class Database {
             progressDialog.dismiss();
             if (result != null) {
                 try {
-                    System.out.println(result);
+//                    System.out.println(result);
                     JSONArray jsonArray = new JSONArray(result);
                     ArrayList<String> items = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {

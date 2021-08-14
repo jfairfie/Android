@@ -36,13 +36,13 @@ public class DataView extends AppCompatActivity {
             //Initializing widgets
         database = new Database(DataView.this, address);
         listView = findViewById(R.id.mysqlStructure);
-        structureManager = new StructureManager(listView, map, database);
+        structureManager = new StructureManager(DataView.this, listView, map, database);
         backBtn = findViewById(R.id.backButton);
 
         //On create initially Show available databases showDatabases.php
         String[] selectList = {"Database"};
 
-        structureManager.moveUp("", DataView.this, listView);
+//        structureManager.moveUp("", DataView.this, listView);
 
         //Clicking on item from listview expands to content beneath it
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,16 +50,14 @@ public class DataView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Getting which item was selected
                 String selectedItem = (String) parent.getItemAtPosition(position);
-                map.put("selectedItem", selectedItem.trim());
-                structureManager.moveUp(selectedItem.trim(), DataView.this, listView);
+//                map.put("selectedItem", selectedItem.trim());
+                structureManager.moveUp(selectedItem.trim());
             }
         });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void onClick(View v) {
-                structureManager.moveDown(DataView.this, listView);
-            }
+        public void onClick(View v) { structureManager.moveDown(); }
         });
     }
 }
