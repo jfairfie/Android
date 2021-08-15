@@ -34,7 +34,8 @@ public class DataView extends AppCompatActivity {
         map.put("endpoint", extras.getString("endpoint"));
         String address = extras.getString("Address");
             //Initializing widgets
-        database = new Database(DataView.this, address);
+
+        database = new Database(DataView.this, "https://www.bptinventory.a2hosted.com/phpscripts/");
         listView = findViewById(R.id.mysqlStructure);
         structureManager = new StructureManager(DataView.this, listView, map, database);
         backBtn = findViewById(R.id.backButton);

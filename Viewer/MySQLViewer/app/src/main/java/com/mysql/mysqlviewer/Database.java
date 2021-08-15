@@ -34,7 +34,7 @@ public class Database {
 
     public Database(Context c, String address) {
         this.c = c;
-        this.address = "";
+        this.address = address;
     }
 
     //Authentication for username and password
@@ -52,7 +52,6 @@ public class Database {
     public void ViewPHP(Context c, Map map, ListView listView, String[] selectList, String php) {
         String data = returnData(map);
         String request = address + php;
-//        System.out.println(request);
         PostPHP post = new PostPHP(c, data, request, listView, selectList);
         post.execute();
     }
@@ -188,7 +187,6 @@ public class Database {
             progressDialog.dismiss();
             if (result != null) {
                 try {
-//                    System.out.println(result);
                     JSONArray jsonArray = new JSONArray(result);
                     ArrayList<String> items = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -232,6 +230,7 @@ public class Database {
         @Override
         protected Boolean doInBackground(Void... voids) {
                 HttpURLConnection httpURLConnection = writeConnection(request, data);
+
                 try {
                     String retString = readerConnection(httpURLConnection);
                     retString = retString.trim();

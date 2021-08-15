@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
     tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/editTextHost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="92dp"
-        android:layout_y="256dp"
+        android:layout_x="108dp"
+        android:layout_y="259dp"
         android:ems="10"
+        android:hint="Hostname"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="165dp"
-        android:hint="Hostname"/>
+        tools:layout_editor_absoluteY="165dp" />
 
     <EditText
         android:id="@+id/editTextPHPAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="93dp"
-        android:layout_y="326dp"
+        android:layout_x="111dp"
+        android:layout_y="332dp"
         android:ems="10"
         android:hint="PHPAddress"
         android:inputType="textPersonName"
@@ -34,31 +36,56 @@
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="91dp"
-        android:layout_y="185dp"
+        android:layout_x="105dp"
+        android:layout_y="197dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="291dp"
-        android:hint="Password"/>
+        tools:layout_editor_absoluteY="291dp" />
 
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="91dp"
-        android:layout_y="116dp"
+        android:layout_x="105dp"
+        android:layout_y="124dp"
         android:ems="10"
+        android:hint="Username"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="389dp"
-        android:hint="Username"/>
+        tools:layout_editor_absoluteY="389dp" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="154dp"
-        android:layout_y="402dp"
+        android:layout_x="155dp"
+        android:layout_y="408dp"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/clearProfilesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="134dp"
+        android:layout_y="612dp"
+        android:text="Clear Profiles" />
+
+    <Button
+        android:id="@+id/openProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="139dp"
+        android:layout_y="548dp"
+        android:text="Open Profile" />
+
+    <Button
+        android:id="@+id/createProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="134dp"
+        android:layout_y="477dp"
+        android:text="Create Profile" />
+
 </AbsoluteLayout>

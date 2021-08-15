@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private List<EditText> list;
-    private Button login;
+    private Button login, createProfile, openProfile, clearProfiles;
     private Database database;
     private LoginAuthentication loginAuthentication;
 
@@ -29,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initializing Button and EditTexts
         login = findViewById(R.id.loginButton);
+        openProfile = findViewById(R.id.openProfileButton);
+        createProfile = findViewById(R.id.createProfileButton);
+        clearProfiles = findViewById(R.id.clearProfilesButton);
         list.add(findViewById(R.id.editTextHost)); //Host of MySQL server
         list.add(findViewById(R.id.editTextUsername));
         list.add(findViewById(R.id.editTextPassword));
@@ -36,20 +39,52 @@ public class LoginActivity extends AppCompatActivity {
 
         loginAuthentication = new LoginAuthentication(LoginActivity.this);
 
-        loginAuthentication.getProfiles();
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isEmpty(LoginActivity.this, list)) {
                     //Authentication action
-                    database = new Database(LoginActivity.this, list.get(3).getText().toString());
+                    String request = list.get(3).getText().toString().trim();
+                    database = new Database(LoginActivity.this, request);
+
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("endpoint", list.get(0).getText().toString());
                     map.put("username", list.get(1).getText().toString());
                     map.put("password", list.get(2).getText().toString());
                     database.Login(map);
                 }
+            }
+        });
+
+        //Creates a new profile
+        createProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if (!isEmpty(LoginActivity.this, list)) {
+                    //keys: username, endpoint, address
+                    String[] data = {list.get(1).getText().toString(), list.get(0).getText().toString(), list.get(3).getText().toString()};
+                    loginAuthentication.createNewProfile(data);
+                }
+            }
+        });
+
+        //Opens up a profile
+        openProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String[] dataList = loginAuthentication.returnProfile();
+
+                //Username, endpoint, address
+                list.get(0).setText(dataList[1]); //Setting endpoint
+                list.get(1).setText(dataList[0]); //Setting username
+                list.get(3).setText(dataList[2]); //Setting address
+            }
+        });
+
+        clearProfiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginAuthentication.removeProfiles();
             }
         });
     }
