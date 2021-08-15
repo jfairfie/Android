@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private List<EditText> list;
     private Button login;
     private Database database;
+    private LoginAuthentication loginAuthentication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         list.add(findViewById(R.id.editTextUsername));
         list.add(findViewById(R.id.editTextPassword));
         list.add(findViewById(R.id.editTextPHPAddress)); //Url for location of php scripts
+
+        loginAuthentication = new LoginAuthentication(LoginActivity.this);
+
+        loginAuthentication.getProfiles();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

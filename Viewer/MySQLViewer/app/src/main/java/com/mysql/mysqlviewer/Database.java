@@ -34,7 +34,7 @@ public class Database {
 
     public Database(Context c, String address) {
         this.c = c;
-        this.address = "https://bptinventory.a2hosted.com/phpscripts/";
+        this.address = "";
     }
 
     //Authentication for username and password
